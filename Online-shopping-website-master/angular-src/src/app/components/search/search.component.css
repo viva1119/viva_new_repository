@@ -1,0 +1,28 @@
+.selected {
+  background-color: gainsboro;
+  color: black; }
+
+.list {
+  float: left;
+  width: 23%;
+  height: 100%;
+  margin-top: 60px;
+  margin-left: 0; }
+  .list .searchlist li {
+    width: 100%;
+    height: 100px;
+    float: left;
+    overflow: scroll;
+    margin: 20px;
+    position: relative;
+    background-color: whitesmoke; }
+    .list .searchlist li:hover {
+      background-color: gray;
+      color: white;
+      left: .5em; }
+
+.list-group {
+  width: 70%;
+  float: right;
+  margin-right: 0;
+  margin-top: 46px; }

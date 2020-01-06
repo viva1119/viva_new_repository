@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  
+  <!-- set BigHammer in navbar-->
+  <a class="navbar-brand" href="#">BigHammer</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor03">
+      
+    <ul class="navbar-nav mr-auto">
+      <!-- set Home in navbar -->
+      <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a class="nav-link" [routerLink]="['/']">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- set View Cart in navbar -->
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="authService.loggedIn()">
+      <a class="nav-link" [routerLink]="['/cart']">View Cart({{itemsincart?.length}})<span class="badge"></span></a>
+      </li>
+      <!-- set Book Mark in navbar -->
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="authService.loggedIn()">
+      <a class="nav-link" [routerLink]="['/bookmark']">BookMark({{itemsinbookmark?.length}})</a>
+      </li>
+      <!-- set Order History in navbar -->
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="authService.loggedIn()">
+          <a class="nav-link" [routerLink]="['/orders']">Order History</a>
+      </li>
+    </ul>
+  
+    <ul class="nav navbar-nav">
+      <!-- set Profile in navbar -->
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="authService.loggedIn()">
+      <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+      </li>
+      <!-- set Register in navbar -->
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a class="nav-link" [routerLink]="['/register']" *ngIf="!authService.loggedIn()">Register</a>
+      </li>
+      <!-- set Login in navbar -->
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="!authService.loggedIn()">
+      <a class="nav-link" [routerLink]="['/login']" >Login</a>
+      </li>
+      <!-- set Logout in navbar -->
+      <li class="nav-item">
+      <a class="nav-link" (click)="onLogoutClick()" href="#" *ngIf="authService.loggedIn()">LOGOUT</a>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0">
+      <!-- set Search part in navbar -->
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="search" name="search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" [routerLink]="['/search']"  (click)="doSearch()">Search</button>
+    </form>
+
+    <!-- set current Weather in navbar -->
+    <a class="nav-link"><img src="{{icon}}"></a>
+    <a class="nav-link" style="color: #8e8c85">{{description}}</a>
+    <a class="nav-link" style="color: #8e8c85">{{temperature}}</a>
+    <a class="nav-link" style="color: #8e8c85" [routerLink]="['/location']">Location</a>
+
+  </div>
+
+</nav>
+
